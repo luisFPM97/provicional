@@ -24,7 +24,7 @@ useEffect(() => {
     date = new Date()
     minutes = 60-date.getMinutes()
     segundos = 60-date.getSeconds()
-    console.log(segundos)
+    
   }, 1000); // Actualizar cada segundo (1000 milisegundos)
    // Limpiar el intervalo al desmontar el componente
 }, []);
@@ -50,10 +50,7 @@ useEffect(() => {
       <i class='bx bxs-error bx-flashing'></i>
       <span>Proximamente sitio web</span>
       </div>
-      <div className="tiempo-restante">
-      <span>Tiempo restante hasta el 29 de junio de 2024 a las 12 del mediodía:</span>
-      <span>{segundos} segundos</span>
-    </div>
+      
     </>
   )
 }
