@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import CardPublicacion from '../blogAdmin/componentes/CardPublicacion';
 
 const HomeBlog = ( ) => {
-  const baseUrl = "http://localhost:8080"
+  const baseUrl = "hhttps://leoandinobackend.onrender.com"
   const [dataBlog, setDataBlog] = useState()
   const [showformp, setShowformp] = useState(false)
   const { handleSubmit, register, reset, formState: { errors } } = useForm()

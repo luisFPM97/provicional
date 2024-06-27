@@ -26,7 +26,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
           )
           .catch()
     }
-    const baseUrl = "http://localhost:8080"
+    const baseUrl = "https://leoandinobackend.onrender.com"
     useEffect(() => {
         axios.get(`${baseUrl}/blogs`)
             .then(res => 

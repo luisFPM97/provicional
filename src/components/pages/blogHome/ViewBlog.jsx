@@ -4,7 +4,7 @@ import CardPublicacion from '../blogAdmin/componentes/CardPublicacion'
 
 const ViewBlog = () => {
     const [infoApi, setInfoApi] = useState([])
-    const baseUrl = "http://localhost:8080"
+    const baseUrl = "https://leoandinobackend.onrender.com"
     useEffect(() => {
         axios.get(`${baseUrl}/blogs`)
         .then(res => 

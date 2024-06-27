@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const AdminEntrada = () => {
-    const baseUrl = "http://localhost:8080"
+    const baseUrl = "https://leoandinobackend.onrender.com"
     const [publicacion, setPublicacion] = useState()
     const {id} = useParams();
     console.log(id)

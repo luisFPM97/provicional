@@ -13,7 +13,7 @@ import AdminEntrada from './components/pages/blogAdmin/AdminEntrada';
 function App() {
   const [blog, setBlog] = useState()
   const [updateInfo, setUpdateInfo] = useState(true)
-  const baseUrl = "http://localhost:8080"
+  const baseUrl = "https://leoandinobackend.onrender.com"
   
   useEffect(() => {
     axios.get(`${baseUrl}/blogs`)
