@@ -10,8 +10,8 @@ const Home = () => {
   let length = valorInput.length
 
   return (
-    <>
-      <div>
+    <div className='inicio'>
+      
         <div className='card'>
           <div className='img'><img src="/img/leo.png" alt="" /></div>
           <div className='info'>
@@ -28,10 +28,9 @@ const Home = () => {
         <br />
         <br />
         <div className='construccion'>
-        <i className='bx bxs-error bx-flashing'></i>
-        <span>Proximamente sitio web</span>
+        
         </div>
-      </div>
+      
 
       <Link to="/blog"><button>Blog</button></Link>
 
@@ -63,7 +62,7 @@ const Home = () => {
           }
           
       </div>
-    </>
+    </div>
   )
 }
 

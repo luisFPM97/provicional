@@ -6,6 +6,8 @@ import AdminBlog from './components/pages/blogAdmin/AdminBlog';
 import AdminBlogId from './components/pages/blogAdmin/componentes/AdminBlogId';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ViewBlog from './components/pages/blogHome/ViewBlog';
+import AdminEntrada from './components/pages/blogAdmin/AdminEntrada';
 
 
 function App() {
@@ -23,9 +25,10 @@ function App() {
     <div className='app'>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path="/blog" element={<HomeBlog blog={blog} setBlog={setBlog} baseUrl={baseUrl}/>} />
+        <Route path="/blog" element={<ViewBlog/>} />
         <Route path='/admiBlog' element={<AdminBlog />} />
         <Route path='/admiBlogLeoAndino' element={<AdminBlogId baseUrl={baseUrl} setBlog={setBlog} blog={blog} setUpdateInfo={setUpdateInfo} updateInfo={updateInfo}/>} />
+        <Route path='/entrada/:id' element={<AdminEntrada/>}/>
       </Routes>
     </div>
   )

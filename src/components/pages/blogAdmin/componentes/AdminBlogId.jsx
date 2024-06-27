@@ -55,6 +55,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
                     <form action="" onSubmit={handleSubmit(submit)}>
                         <input type="text" {...register("name")} placeholder="Titulo" name="name" required/>
                         <input type="text" {...register("description")} placeholder="Descripcion" name="description" required/>
+                        
                         <button type='submit'>Añadir Blog</button>
                     </form>
                 </div>

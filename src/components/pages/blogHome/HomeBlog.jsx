@@ -1,11 +1,13 @@
 import axios from 'axios'
-
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import CardPublicacion from '../blogAdmin/componentes/CardPublicacion';
 
 const HomeBlog = ( ) => {
   const baseUrl = "http://localhost:8080"
   const [dataBlog, setDataBlog] = useState()
   const [showformp, setShowformp] = useState(false)
+  const { handleSubmit, register, reset, formState: { errors } } = useForm()
   useEffect(() => {
     axios.get(`${baseUrl}/blogs`)
     .then(res => 
@@ -17,7 +19,17 @@ const HomeBlog = ( ) => {
   function changefshow() {
     setShowformp(prevState => !prevState)
   }
-  
+  const postpublic = data => {
+    data.blogId = 1
+    const url = `${baseUrl}/publicaciones`
+    
+    axios.post(url,data)
+      .then(res => 
+        console.log(res.data),            
+      )
+      .catch(err => console.log(err))
+}
+
   return (
     <div className='homePageBlog'>
       <div className='header'>
@@ -39,19 +51,33 @@ const HomeBlog = ( ) => {
                 {
                   showformp &&
                   <div className='formularioPublicacion'>
-                  <form action="">
-                    <input type="text" placeholder='Nombre' />
-                    <textarea name="description" placeholder='Descripcion del artículo' id=""></textarea>
-                    <button type='submit' onClick={changefshow}>Agregar publicacion</button>
+                  <form action="" onSubmit={handleSubmit(postpublic)}>
+                    <input type="text" {...register("titulo")} placeholder='Nombre' name='titulo' required/>
+                    <input type="text" name="descripcion" {...register("descripcion")} placeholder='Descripcion del artículo'  required/>
+                    <input type="text" {...register("imagen")} placeholder='url de la imagen' name='imagen' required/>
+                    <button  type='submit' >Agregar publicacion</button>
                   </form>
                 </div>
                 }
+                
                 {
-                  dataBlog.publicacions
+                  item.publicacions.length===0
                   &&
-                  <span>publicacion</span>
-                  ||
+                  
                   <span>{item.name} sin publicaciones</span>
+                  ||
+                  <div className='publicaciones'>
+                    {
+                    
+                    item.publicacions.sort((a, b) => a.id - b.id).map((publicacion, i)=>(
+                      <CardPublicacion
+                      key={i}
+                      publicacion={publicacion}
+                      />
+                    ))
+                  }
+                  </div>
+                  
 
                 }
             </div>
