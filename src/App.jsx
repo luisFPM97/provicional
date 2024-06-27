@@ -1,57 +1,33 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
-import moment from 'moment'; // Importar librería Moment.js
+import { Route, Routes } from 'react-router-dom';
+import HomeBlog from './components/pages/blogHome/HomeBlog';
+import Home from './components/Home';
+import AdminBlog from './components/pages/blogAdmin/AdminBlog';
+import AdminBlogId from './components/pages/blogAdmin/componentes/AdminBlogId';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [fechaActual, setFechaActual] = useState(moment());
-const [fechaObjetivo, setFechaObjetivo] = useState(moment('2024-06-29 12:00:00'));
-
-
-
- let date
- let minutes
- let segundos
-
-useEffect(() => {
-  let meses
-  const intervalId = setInterval(() => {
-    /*setFechaActual(moment());*/
-    date = new Date()
-    minutes = 60-date.getMinutes()
-    segundos = 60-date.getSeconds()
-    
-  }, 1000); // Actualizar cada segundo (1000 milisegundos)
-   // Limpiar el intervalo al desmontar el componente
-}, []);
-
+  const [blog, setBlog] = useState()
+  const [updateInfo, setUpdateInfo] = useState(true)
+  const baseUrl = "http://localhost:8080"
+  
+  useEffect(() => {
+    axios.get(`${baseUrl}/blogs`)
+    .then(res => setBlog(res.data))
+    .catch(err => console.log(err))
+    }, [])
+  
   return (
-    <>
-      <div className='card'>
-        <div className='img'><img src="/img/leo.png" alt="" /></div>
-        <div className='info'>
-          <h1>José Leonardo Henao Giraldo</h1>
-          <h2>Investigador e Historiador</h2>
-          <span>
-            <a href="https://co.linkedin.com/in/jose-leonardo-henao-giraldo-962970245" target='blank'>
-              <i className='bx bxl-linkedin bx-burst-hover' ></i>
-            </a>
-          </span>
-        </div>
-      </div>
-      <br />
-      <br />
-      <br />
-      <div className='construccion'>
-      <i class='bx bxs-error bx-flashing'></i>
-      <span>Proximamente sitio web</span>
-      </div>
-      
-    </>
+    <div className='app'>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path="/blog" element={<HomeBlog blog={blog} setBlog={setBlog} baseUrl={baseUrl}/>} />
+        <Route path='/admiBlog' element={<AdminBlog />} />
+        <Route path='/admiBlogLeoAndino' element={<AdminBlogId baseUrl={baseUrl} setBlog={setBlog} blog={blog} setUpdateInfo={setUpdateInfo} updateInfo={updateInfo}/>} />
+      </Routes>
+    </div>
   )
 }
 

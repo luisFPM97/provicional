@@ -1,7 +1,5 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
   text-align: center;
 }
 
@@ -89,6 +87,172 @@
     
   }
 }
+/*app*/
+.app{
+  width: 100%;
+  height: auto;
+}
+/*ingreso*/
+.modaling{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  .cardm{
+    min-width: 300px;
+    width: 50%;
+    max-width: 50%;
+    height: 300px;
+    background-color: inherit;
+    border-radius:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+/*HomaBlog*/
+.homeBlog{
+  width: 100%;
+  height: 100vh;
+  .btnAdmin{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+  }
+  
+}
+.homePageBlog{
+  width: 100%;
+  height: 100%;
+
+  .header{
+    width: 100%;
+    height: 350px;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/img/camera.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    .title{
+      font-size: 65px;
+      filter: drop-shadow(4px 4px 1px rgba(0, 0, 0, 0.4));
+    }
+  }
+  .itemCont{
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 30px;
+    .titleBlog{
+      font-size: 65px;
+      font-weight: bold;
+      font-family:monospace;
+    }
+    .itemsblog{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      .itemBlog{
+        width: 100%;
+        min-height: 80px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        text-align: center;
+        padding-left: 30px;
+        .textBlog{
+          .title{
+            font-size: 45px;
+            margin: 0;
+            padding-top: 10px;
+          }
+          .description{
+            font-size: 25px;
+            margin: 0;
+            padding-bottom: 10px;
+          }
+        }
+        .formularioPublicacion{
+          width: 100%;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          form{
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-bottom: 30px;
+            input, textarea{
+              background-color: transparent;
+              color: black;
+              border: none;
+              border-bottom: 1px solid black;
+              border-radius: 10px;
+              text-align: center ;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*AdminBlog*/
+.adminblog{
+  width: 100%;
+  height: 100%;
+  .btnHome{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+  }
+  .agregarblog{
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    .btnaddb{
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .formulario{
+      padding-top: 50px;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius:9px;
+
+      form{
+        display: flex;
+        margin: 10px;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width:980px){
   .card{
     flex-direction: column;
