@@ -43,7 +43,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
         <HomeBlog setDataBlog={setDataBlogc}/>
         <div className='agregarblog'>
            {
-            dataBlogc === [] 
+            dataBlogc 
             &&
             <></>
             ||

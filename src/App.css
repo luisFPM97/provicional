@@ -273,6 +273,10 @@
 }
 .adminPublicacion{
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   min-height: 100vh;
   padding-top: 0;
   margin: 0;

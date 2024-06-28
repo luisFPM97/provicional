@@ -18,6 +18,7 @@ const AdminEntrada = () => {
     <div className='adminPublicacion'  >
         {
             publicacion &&
+            <>
             <div className="header" >
             <h1 className='title'>{publicacion.titulo}</h1>
             {
@@ -25,6 +26,9 @@ const AdminEntrada = () => {
                 <img src={publicacion.imagen} alt="" />
             }
             </div>
+            <span>Entradas {publicacion.titulo}</span>
+            <button>Aregar Entrada</button>
+            </>
         }
     </div>
   )

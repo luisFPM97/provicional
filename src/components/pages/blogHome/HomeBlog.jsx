@@ -1,12 +1,14 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import CardPublicacion from '../blogAdmin/componentes/CardPublicacion';
+import CardPublicationAdmin from '../blogAdmin/componentes/CardPublicationAdmin';
+
 
 const HomeBlog = ( ) => {
   const baseUrl = "https://leoandinobackend.onrender.com"
   const [dataBlog, setDataBlog] = useState()
-  const [showformp, setShowformp] = useState(false)
+  const [idBlog, setIdBlog] = useState()
+  const [showformp, setShowformp] = useState(undefined)
   const { handleSubmit, register, reset, formState: { errors } } = useForm()
   useEffect(() => {
     axios.get(`${baseUrl}/blogs`)
@@ -16,16 +18,20 @@ const HomeBlog = ( ) => {
     .catch(err => console.log(err))
   }, [])
   console.log(dataBlog)
-  function changefshow() {
-    setShowformp(prevState => !prevState)
+  const changefshow=(id) =>{
+    setShowformp(true)
+    setIdBlog(id)
   }
+  console.log(showformp)
+  console.log(idBlog)
   const postpublic = data => {
-    data.blogId = 1
+    
     const url = `${baseUrl}/publicaciones`
     
     axios.post(url,data)
       .then(res => 
-        console.log(res.data),            
+        console.log(res.data), 
+        setIdBlog(undefined)           
       )
       .catch(err => console.log(err))
 }
@@ -55,6 +61,7 @@ const HomeBlog = ( ) => {
                     <input type="text" {...register("titulo")} placeholder='Nombre' name='titulo' required/>
                     <input type="text" name="descripcion" {...register("descripcion")} placeholder='Descripcion del artículo'  required/>
                     <input type="text" {...register("imagen")} placeholder='url de la imagen' name='imagen' required/>
+                    <input type="text" value={item.id} {...register("blogId")} readOnly/>
                     <button  type='submit' >Agregar publicacion</button>
                   </form>
                 </div>
@@ -70,7 +77,7 @@ const HomeBlog = ( ) => {
                     {
                     
                     item.publicacions.sort((a, b) => a.id - b.id).map((publicacion, i)=>(
-                      <CardPublicacion
+                      <CardPublicationAdmin
                       key={i}
                       publicacion={publicacion}
                       />
