@@ -4,7 +4,7 @@ import CardPublicacion from '../blogAdmin/componentes/CardPublicacion'
 
 const ViewBlog = () => {
     const [infoApi, setInfoApi] = useState([])
-    const baseUrl = "https://leoandinobackend.onrender.com"
+    const baseUrl = "https://leoandinobackend-1.onrender.com"
     useEffect(() => {
         axios.get(`${baseUrl}/blogs`)
         .then(res => 
@@ -29,9 +29,6 @@ const ViewBlog = () => {
                   <h2 className='title'>{item.name}</h2>
                   <p className='description'>{item.description}</p>
                 </div>
-                
-                
-                
                 {
                   item.publicacions.length===0
                   &&

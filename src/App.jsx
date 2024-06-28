@@ -14,7 +14,7 @@ import ViewPublicacion from './components/pages/blogAdmin/ViewPublicacion';
 function App() {
   const [blog, setBlog] = useState()
   const [updateInfo, setUpdateInfo] = useState(true)
-  const baseUrl = "https://leoandinobackend.onrender.com"
+  const baseUrl = "https://leoandinobackend-1.onrender.com"
   
   useEffect(() => {
     axios.get(`${baseUrl}/blogs`)

@@ -5,7 +5,7 @@ import CardPublicationAdmin from '../blogAdmin/componentes/CardPublicationAdmin'
 
 
 const HomeBlog = ( ) => {
-  const baseUrl = "https://leoandinobackend.onrender.com"
+  const baseUrl = "https://leoandinobackend-1.onrender.com"
   const [dataBlog, setDataBlog] = useState()
   const [idBlog, setIdBlog] = useState()
   const [showformp, setShowformp] = useState(undefined)

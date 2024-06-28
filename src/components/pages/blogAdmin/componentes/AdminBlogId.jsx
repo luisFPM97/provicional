@@ -26,7 +26,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
           )
           .catch()
     }
-    const baseUrl = "https://leoandinobackend.onrender.com"
+    const baseUrl = "https://leoandinobackend-1.onrender.com"
     useEffect(() => {
         axios.get(`${baseUrl}/blogs`)
             .then(res => 
