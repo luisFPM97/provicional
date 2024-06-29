@@ -70,12 +70,14 @@ const AdminEntrada = () => {
                 <img src={publicacion.imagen} alt="" />
             }
             </div>
-            <p>{publicacion.descripcion}</p>
+            <div className='contenido'>
+                <p>{publicacion.descripcion}</p>
+            </div>
             <span>Entradas {publicacion.titulo}</span>
             {
                 publicacion.entradas 
                 &&
-                <div>
+                <div className='contenedorentradas'>
                     {
                         publicacion.entradas.sort((a, b) => a.id - b.id).map((entrada, index) =>
                             <div key={index} className='entrada' >
@@ -85,7 +87,7 @@ const AdminEntrada = () => {
                                     &&
                                     <></>
                                     ||
-                                    <div>
+                                    <div className='contenedorimagenes'>
                                         {
                                             entrada.imagens.map((imagen, i)=>(
                                                 <div key={i} className='imagen'>
