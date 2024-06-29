@@ -21,8 +21,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
         }),
         axios.post(url,data)
           .then(res => 
-            console.log(res.data),
-            setBlog([...blog, res.data]),            
+            console.log(res.data)            
           )
           .catch()
     }
