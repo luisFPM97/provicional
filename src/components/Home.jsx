@@ -18,7 +18,7 @@ const Home = () => {
     
     // Store the session variable in local storage
     window.localStorage.setItem('password', 'leoandino'); // Replace with your desired session variable name
-
+    navigate('/admiBlog')
     // **Optional:** You might want to redirect to the admin page here
     // console.log('Login successful!'); // Replace with appropriate actions
   }
