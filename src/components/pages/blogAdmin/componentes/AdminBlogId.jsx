@@ -8,7 +8,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
 
     const [showAddBlog, setShowAddBlog] = useState(false)
     const { handleSubmit, register, reset, formState: { errors } } = useForm()
-    const [dataBlogc, setDataBlogc] = useState()
+    const [dataBlogc, setDataBlogc] = useState(undefined)
     function showAdminB() {
         setShowAddBlog(prevState => !prevState)
     }
@@ -39,29 +39,39 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
         <Link to="/admiBlog">
        <button className='btnHome'>Home</button>
       </Link>
-        <HomeBlog setDataBlog={setDataBlogc}/>
-        <div className='agregarblog'>
-           {
-            dataBlogc 
+        {
+            dataBlogc
             &&
-            <></>
-            ||
             <>
-            <button className='btnaddb' onClick={showAdminB}>{showAddBlog && 'x' ||'Agregar Blog'}</button>
+                <HomeBlog setDataBlog={setDataBlogc}/>
+            <div className='agregarblog'>
             {
-                showAddBlog &&
-                <div className='formulario'>
-                    <form action="" onSubmit={handleSubmit(submit)}>
-                        <input type="text" {...register("name")} placeholder="Titulo" name="name" required/>
-                        <input type="text" {...register("description")} placeholder="Descripcion" name="description" required/>
-                        
-                        <button type='submit'>Añadir Blog</button>
-                    </form>
-                </div>
+                dataBlogc 
+                &&
+                <> </>
+                ||
+                <>
+                <button className='btnaddb' onClick={showAdminB}>{showAddBlog && 'x' ||'Agregar Blog'}</button>
+                {
+                    showAddBlog &&
+                    <div className='formulario'>
+                        <form action="" onSubmit={handleSubmit(submit)}>
+                            <input type="text" {...register("name")} placeholder="Titulo" name="name" required/>
+                            <input type="text" {...register("description")} placeholder="Descripcion" name="description" required/>
+                            
+                            <button type='submit'>Añadir Blog</button>
+                        </form>
+                    </div>
+                }
+                </>
             }
+            </div>
             </>
-           }
-        </div>
+        ||
+        <>
+            <div>Cargando ...</div>
+        </>
+        }
     </div>
   )
 }

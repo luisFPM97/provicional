@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CardPublicationAdmin = ({publicacion}) => {
     const navigate = useNavigate();
-    console.log(publicacion)
+
   return (
     <div className='cardpublicacion' onClick={()=>navigate(`/entrada/${publicacion.id}`)}>
         <img src={publicacion.imagen} alt="" />

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import CardPublicacion from '../blogAdmin/componentes/CardPublicacion'
 
 const ViewBlog = () => {
-    const [infoApi, setInfoApi] = useState([])
+    const [infoApi, setInfoApi] = useState(undefined)
     const baseUrl = "https://leoandinobackend-1.onrender.com"
     useEffect(() => {
         axios.get(`${baseUrl}/blogs`)
@@ -19,11 +19,15 @@ const ViewBlog = () => {
         <div className='header'>
         <h1 className='title'>Leo Andino</h1>
       </div>
-      <div className='itemCont'>
+      {
+        infoApi &&
+        <div className='itemCont'>
         <span className='titleBlog'>Bitacora de viajes</span>
         <div className='itemsblog'>
           {
-            infoApi && infoApi.map((item, i) =>
+            infoApi 
+            && 
+            infoApi.map((item, i) =>
             <div className='itemBlog' key={i}>
                 <div className='textBlog'>
                   <h2 className='title'>{item.name}</h2>
@@ -54,6 +58,11 @@ const ViewBlog = () => {
           }
         </div>
       </div>
+      ||
+      <>
+      <div>Cargando ...</div>
+      </>
+      }
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 
 const AdminEntrada = () => {
     const baseUrl = "https://leoandinobackend-1.onrender.com"
+    const password = window.localStorage.getItem('password')
     const [publicacion, setPublicacion] = useState()
     const [dataentradas, setDataentradas] = useState(undefined)
     const [showtypeents, setShowtypeents] = useState(false)
@@ -25,6 +26,9 @@ const AdminEntrada = () => {
         .catch(err => console.log(err))
     }
     useEffect(() => {
+        if (!password){
+            window.location.href = '/'
+          }
       if (consulta) {
         console.log("se hizo la consulta")
         axios.get(`${baseUrl}/publicaciones/ ${id}`)
@@ -35,8 +39,10 @@ const AdminEntrada = () => {
     
     console.log(publicacion)
     console.log(showtypeents)
+
     const addtexto = data => {
         const url = `${baseUrl}/textos`
+        console.log(data)
         if (consulta) {
             setConsulta(false)
         }
@@ -47,6 +53,7 @@ const AdminEntrada = () => {
          .catch(err => console.log(err))
     }
     const addimagen = data =>{
+        console.log(data)
         const url = `${baseUrl}/imagenes`
         if (consulta) {
             setConsulta(false)
@@ -89,7 +96,7 @@ const AdminEntrada = () => {
                                     ||
                                     <div className='contenedorimagenes'>
                                         {
-                                            entrada.imagens.map((imagen, i)=>(
+                                            entrada.imagens.sort((a, b) => a.id - b.id).map((imagen, i)=>(
                                                 <div key={i} className='imagen'>
                                                     <img src={imagen.urlImagen} alt="" />
                                                 </div>
@@ -104,7 +111,7 @@ const AdminEntrada = () => {
                                     ||
                                     <div>
                                         {
-                                            entrada.textos.map((texto, i)=>(
+                                            entrada.textos.sort((a, b) => a.id - b.id).map((texto, i)=>(
                                                 <div key={i} className='texto'>
                                                     <span>{texto.contenido}</span>
                                                 </div>
@@ -146,14 +153,14 @@ const AdminEntrada = () => {
                                     <button type='submit'>Agregar</button>
                                 </form>}
                             {tipoContenido === '2' && 
-                                
+
                                 <form className='formti' action="" onSubmit={handleSubmit(addtexto)}>
                                     <input type="text" value={dataentrada.id} {...register("entradaId")} name="entradaId" id="" readOnly hidden/>
                                     <textarea {...register("contenido")} placeholder='texto de entrada' name='contenido'/>
                                     <button type='submit'>Agregar</button>
                                 </form>
                             }
-                            <button onClick={()=>(setShowtypeents(false))}>Terminar entrada</button>
+                            <button onClick={()=>(setShowtypeents(false), location.reload())}>Terminar entrada</button>
                             
                         </div>
             }

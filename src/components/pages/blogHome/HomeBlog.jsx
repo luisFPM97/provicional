@@ -17,13 +17,13 @@ const HomeBlog = ( ) => {
     )
     .catch(err => console.log(err))
   }, [])
-  console.log(dataBlog)
+ 
   const changefshow=(id) =>{
     setShowformp(true)
     setIdBlog(id)
   }
-  console.log(showformp)
-  console.log(idBlog)
+ 
+
   const postpublic = data => {
     
     const url = `${baseUrl}/publicaciones`

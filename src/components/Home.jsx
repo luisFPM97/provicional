@@ -7,6 +7,10 @@ const Home = () => {
   function showM() {
     setShowModal(prevState => !prevState)
   }
+  function login(valorInput) {
+    setShowModal(prevState => !prevState)
+    window.localStorage.setItem('password', valorInput)
+  }
   let length = valorInput.length
 
   return (
@@ -57,7 +61,7 @@ const Home = () => {
                   <span>Contraseña incorrecta</span>
                 }
               </div>
-              <button onClick={showM}>x</button>
+              <button onClick={login}>x</button>
             </div>
           }
           
