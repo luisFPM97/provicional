@@ -9,6 +9,7 @@ import axios from 'axios';
 import ViewBlog from './components/pages/blogHome/ViewBlog';
 import AdminEntrada from './components/pages/blogAdmin/AdminEntrada';
 import ViewPublicacion from './components/pages/blogAdmin/ViewPublicacion';
+import Pruebaimagen from './components/pages/blogAdmin/Pruebaimagen';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/admiBlogLeoAndino' element={<AdminBlogId baseUrl={baseUrl} setBlog={setBlog} blog={blog} setUpdateInfo={setUpdateInfo} updateInfo={updateInfo}/>} />
         <Route path='/entrada/:id' element={<AdminEntrada/>}/>
         <Route path='/publicacion/:id' element={<ViewPublicacion/>}/>
+        <Route path='/prueba'  element={<Pruebaimagen/>}/>
       </Routes>
     </div>
   )
