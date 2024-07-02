@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false)
   const [valorInput, setValorInput] = useState('');
+  const navigate = useNavigate();
   function showM() {
     setShowModal(prevState => !prevState)
   }
+  useEffect(() => {
+    console.log(valorInput)
+  }, [])
+  
+
   function login(valorInput) {
-    setShowModal(prevState => !prevState)
-    window.localStorage.setItem('password', valorInput)
+    setShowModal(prevState => !prevState);
+    
+    // Store the session variable in local storage
+    window.localStorage.setItem('password', 'leoandino'); // Replace with your desired session variable name
+
+    // **Optional:** You might want to redirect to the admin page here
+    // console.log('Login successful!'); // Replace with appropriate actions
   }
-  let length = valorInput.length
+  console.log(valorInput)
 
   return (
     <div className='inicio'>
@@ -39,32 +50,20 @@ const Home = () => {
       <Link to="/blog"><button>Blog</button></Link>
 
       <div className='enter'>
-          <button onClick={showM}>
-            Administrar
-          </button>
-          {
-            showModal &&
-            <div className='modaling'>
-              <div className='cardm'>
-                <span>ingrese contraseña</span>
-                <input type="password" value={valorInput} onChange={(e) => (setValorInput(e.target.value) )}/>
-                {
-                  valorInput === "leoandino"
-                  &&
-                  <Link to="/admiBlog">
-                    <button onClick={showM}>
-                      Ingresar
-                      
-                    </button>
-                  </Link>
-                  ||
-                  <span>Contraseña incorrecta</span>
-                }
-              </div>
-              <button onClick={login}>x</button>
+        <button onClick={showM}>Administrar</button>
+        {showModal && (
+          <div className='modaling'>
+            <div className='cardm'>
+              <span>Ingrese contraseña</span>
+              <input type="password" value={valorInput} onChange={(e) => setValorInput(e.target.value)} />
+              {valorInput === "leoandino" && (
+                <button onClick={login}>Ingresar</button>
+              )}
+              {valorInput !== "leoandino" && <span>Contraseña incorrecta</span>}
             </div>
-          }
-          
+            <button onClick={showM}>x</button>
+          </div>
+        )}
       </div>
     </div>
   )

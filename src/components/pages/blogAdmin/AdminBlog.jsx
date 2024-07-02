@@ -7,6 +7,7 @@ import ViewBlog from '../blogHome/ViewBlog'
 const AdminBlog = () => {
 
   const password = window.localStorage.getItem('password')
+  console.log(password)
   useEffect(() => {
 
     if (!password){
