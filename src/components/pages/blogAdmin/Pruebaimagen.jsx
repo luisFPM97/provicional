@@ -74,8 +74,9 @@ const Pruebaimagen = () => {
         <ReactQuill modules={module} theme="snow" value={value} onChange={setValue} />
         <div  dangerouslySetInnerHTML={{ __html: value }} />
         <input type="file" accept="image/jpeg" onChange={handleChange} />
-  <img src={dataimagen} alt="" />
-      
+        <img src={dataimagen} alt="" />
+        <img src="https://drive.usercontent.google.com/download?id=18bnp-UncUWtK-Hyc7tHozKIUX0TokTi9&export=view" alt="" width={300} height={300}/>
+        
     </div>
   )
 }

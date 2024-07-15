@@ -21,9 +21,10 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
         }),
         axios.post(url,data)
           .then(res => 
-            console.log(res.data)            
+            console.log(res.data)
           )
           .catch()
+          
     }
     const baseUrl = "https://leoandinobackend-1.onrender.com"
     useEffect(() => {
@@ -42,35 +43,37 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
         {
             dataBlogc
             &&
-            <>
-                <HomeBlog setDataBlog={setDataBlogc}/>
-            <div className='agregarblog'>
-            {
-                dataBlogc 
-                &&
-                <> </>
-                ||
                 <>
-                <button className='btnaddb' onClick={showAdminB}>{showAddBlog && 'x' ||'Agregar Blog'}</button>
+                    <HomeBlog setDataBlog={setDataBlogc}/>
+                <div className='agregarblog'>
                 {
-                    showAddBlog &&
-                    <div className='formulario'>
-                        <form action="" onSubmit={handleSubmit(submit)}>
-                            <input type="text" {...register("name")} placeholder="Titulo" name="name" required/>
-                            <input type="text" {...register("description")} placeholder="Descripcion" name="description" required/>
-                            
-                            <button type='submit'>Añadir Blog</button>
-                        </form>
-                    </div>
+                    dataBlogc.length === 0
+                    &&
+                    <>
+                    <button className='btnaddb' onClick={showAdminB}>{showAddBlog && 'x' ||'Agregar Blog'}</button>
+                    {
+                        showAddBlog &&
+                        <div className='formulario'>
+                            <form action="" onSubmit={handleSubmit(submit)}>
+                                <input type="text" {...register("name")} placeholder="Titulo" name="name" required/>
+                                <input type="text" {...register("description")} placeholder="Descripcion" name="description" required/>
+                                
+                                <button type='submit'>Añadir Blog</button>
+                            </form>
+                        </div>
+                    }
+                    </>
+                    ||
+                    <>
+                    
+                    </>
                 }
+                </div>
                 </>
-            }
-            </div>
-            </>
-        ||
-        <>
-            <div>Cargando ...</div>
-        </>
+            ||
+                <>
+                    <div>Cargando ...</div>
+                </>
         }
     </div>
   )

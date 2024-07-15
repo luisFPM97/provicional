@@ -19,7 +19,8 @@
     "react-hook-form": "^7.52.0",
     "react-image": "^4.1.0",
     "react-quill": "^2.0.0",
-    "react-router-dom": "^6.24.0"
+    "react-router-dom": "^6.24.0",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

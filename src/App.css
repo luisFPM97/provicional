@@ -341,6 +341,9 @@
       min-height: 200px;
       margin-bottom: 30px;
     }
+    img{
+      width: 100%;
+    }
   }
 }
 .contenedorentradas{
