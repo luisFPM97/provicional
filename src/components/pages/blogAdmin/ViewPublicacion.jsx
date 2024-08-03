@@ -38,15 +38,15 @@ const ViewPublicacion = () => {
                             <div key={index} className='entrada' >
                                 <span>{moment(entrada.createdAt).format('YYYY-MM-DD')}</span>
                                 {
-                                    entrada.imagens.length === 0
+                                    entrada.images.length === 0
                                     &&
                                     <></>
                                     ||
                                     <div className='contenedorimagenes'>
                                         {
-                                            entrada.imagens.map((imagen, i)=>(
+                                            entrada.images.map((imagen, i)=>(
                                                 <div key={i} className='imagen'>
-                                                    <img src={imagen.urlImagen} alt="" />
+                                                    <img src={imagen.url} alt="" />
                                                 </div>
                                             ))
                                         }
