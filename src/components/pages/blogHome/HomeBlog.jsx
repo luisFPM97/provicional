@@ -75,9 +75,10 @@ const HomeBlog = ( ) => {
                   showformp &&
                   <div className='formularioPublicacion'>
                   <form action="" onSubmit={handleSubmit(postpublic)}>
-                    <input type="text" name="titulo" {...register("titulo")} placeholder='Nombre' required/>
-                    <input type="text" name="descripcion" {...register("descripcion")} placeholder='Descripcion del artículo'  required/>
-                    <input type="text" {...register("imagen")} placeholder='url de la imagen' name='imagen' />
+                    <input className='plcf' type="text" name="titulo" {...register("titulo")} placeholder='Nombre del viaje' required/>
+                    <textarea className='plcf descf' type="text" name="descripcion" {...register("descripcion")} placeholder='Descripción del viaje'  required/>
+                    <input className='plcf' type="text" {...register("imagen")} placeholder='url de la imagen' name='imagen' />
+                    <span className='aviso'>*La imagen no es de uso obligatorio, se asigna una por defecto*</span>
                     <input type="text" value={item.id} {...register("blogId")} readOnly hidden/>
                     <button  type='submit' >Agregar publicacion</button>
                   </form>

@@ -94,7 +94,7 @@ const AdminEntrada = () => {
         (res) => (
           console.log("imagen subida"),
           reset({
-            urlImagen: "",
+            file: "",
           }),
           setConsulta(true)
         )
@@ -120,8 +120,8 @@ const AdminEntrada = () => {
                 .sort((a, b) => a.id - b.id)
                 .map((entrada, index) => (
                   <div key={index} className="entrada">
-                    <span>
-                      {moment(entrada.createdAt).format("YYYY-MM-DD")}
+                    <span className="fecha">
+                      {moment(entrada.createdAt).format("YYYY-MM-DD HH:mm")}
                     </span>
                     {(entrada.images.length === 0 && <></>) || (
                       <div className="contenedorimagenes">
@@ -163,7 +163,7 @@ const AdminEntrada = () => {
               name="publicacionId"
               readOnly
             />
-            <button type="submit">Aregar Entrada</button>
+            <button className="addent" type="submit">Aregar Entrada</button>
           </form>
           {showtypeents && (
             <div className="modalentrada">
@@ -200,7 +200,7 @@ const AdminEntrada = () => {
                     name="entradaId"
                     hidden
                   />
-                  <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+                  <input type="file" onChange={(e) => setImage(e.target.files[0])} name="file"/>
                   <input type="text" value={dataentrada.id} onChange={(e) => setEntradaId(dataentrada.id)} {...register("entradaId")} hidden/>
                   <button type="submit">Agregar</button>
                 </form>

@@ -172,23 +172,31 @@
   top: 0;
   left: 0;
   z-index: 999;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   .cardm{
-    min-width: 300px;
-    width: 50%;
-    max-width: 50%;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     background-color: inherit;
     border-radius:30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    .pass{
+      font-size: 35px;
+    }
+  }
+  .x{
+    position: absolute;
+    top:10px;
+    right:10px;
+    font-size:20px;
   }
 }
 /*inicio*/
@@ -279,24 +287,44 @@
           }
         }
         .formularioPublicacion{
+          position: fixed;
+          top: 0;
+          background-color: rgba(0, 0, 0, 0.7);
           width: 100%;
-          height: auto;
+          height: 100vh;
           display: flex;
           justify-content: center;
           align-items: center;
           form{
+            height: 100%;
+            width: 9%;
             padding-top: 30px;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            justify-content: center;
+            gap: 8px;
             padding-bottom: 30px;
             input, textarea{
-              background-color: transparent;
-              color: black;
+              font-size: 25px;
+              background-color: rgba(0, 0, 0, 0.7);
+              color: white;
               border: none;
-              border-bottom: 1px solid black;
+              border-bottom: 1px solid rgb(255, 255, 255);
+              font-weight: bold;
               border-radius: 10px;
               text-align: center ;
+              padding: 10px;
+            }
+            .plcf::placeholder{
+              color: rgba(255, 255, 255, 0.6);
+            }
+            .descf{
+              height: 25%;
+            }
+            .aviso{
+              font-weight: bold;
+              color: rgb(255, 255, 255);
+              text-shadow: 0 0 140px rgb(51, 51, 51);
             }
           }
         }
@@ -352,6 +380,7 @@
   align-items: center;
   min-height: 100vh;
   padding-top: 0;
+  padding-bottom: 40px;
   margin: 0;
   .header{
     height: 350px;
@@ -371,6 +400,9 @@
       width: 150%;
     }
   }
+  .contenido{
+    font-size: 25px;
+  }
 }
 /*entradas*/
 .formEntrada{
@@ -385,16 +417,14 @@
 
 }
 .modalentrada{
-  
-  top: 60px;
-  right: 10px;
+
   border-radius: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
   position: fixed;
-  height: auto;
-  width: 350px;
-  background-color: rgba(255, 255, 255, 0.9);
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -441,24 +471,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 30px;
   padding-bottom: 30px;
+  .fecha{
+    width: 90%;
+    display: flex;
+    font-weight: bold;
+  }
 }
 .contenedorimagenes{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  justify-content: start;
+  align-items: start;
   width: 90%;
-  overflow: hidden;
+  overflow-x: scroll;
+  scroll-snap-align: center;
+  scroll-snap-type: proximity;
   .imagen{
-    width: 80vw;
+    min-width: 45vw;
+    width: 90vw;
     height: 45vW;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     display: flex;
+    overflow: hidden;
     img{
-      width: 100%;
+      height: 100%;
     }
   }
 }
@@ -503,6 +541,24 @@
   .card{
     flex-direction: column;
     height: 700px;
+  }
+  .inicio{
+    .info{
+      justify-content: center;
+      align-items: center;
+      margin-left: 0;
+    }
+  }
+  .contenedorhome{
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    .blog{
+      width: 90%;
+    }
+    .cv{
+      width: 90%;
+    }
   }
 }
 

@@ -15,12 +15,8 @@ const Home = () => {
 
   function login(valorInput) {
     setShowModal(prevState => !prevState);
-    
-    // Store the session variable in local storage
-    window.localStorage.setItem('password', 'leoandino'); // Replace with your desired session variable name
+    window.localStorage.setItem('password', 'leoandino'); 
     navigate('/admiBlog')
-    // **Optional:** You might want to redirect to the admin page here
-    // console.log('Login successful!'); // Replace with appropriate actions
   }
   console.log(valorInput)
 
@@ -38,10 +34,10 @@ const Home = () => {
               </a>
             </span>
           </div>
-        </div>
-        <br />
-        <br />
-        <br />
+          </div>
+          <br />
+          <br />
+          <br />
         <div className='construccion'>
         
         </div>
@@ -54,27 +50,24 @@ const Home = () => {
       
       <Link className='cv'>
           <span>CONOCE MÁS SOBRE MI</span>
+          <span> cv - publicaciones</span>
       </Link>
 
     </div>
-    
-      
-
-    
 
       <div className='enter'>
         <button onClick={showM}>INICIAR SESIÓN</button>
         {showModal && (
           <div className='modaling'>
             <div className='cardm'>
-              <span>Ingrese contraseña</span>
+              <span className='pass'>Ingrese contraseña</span>
               <input type="password" value={valorInput} onChange={(e) => setValorInput(e.target.value)} />
               {valorInput === "leoandino" && (
                 <button onClick={login}>Ingresar</button>
               )}
               {valorInput !== "leoandino" && <span>Contraseña incorrecta</span>}
             </div>
-            <button onClick={showM}>x</button>
+            <button className='x' onClick={showM}>x</button>
           </div>
         )}
       </div>
