@@ -32,14 +32,12 @@
 }
 
 .card {
-
-  max-width: 700px;
+  width: 90%;
   height: 300px;
   border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   border-radius: 40px;
   box-shadow: 0 0 20px black;
   .img{
@@ -57,6 +55,7 @@
     img{
       position: absolute;
       transition: all 0.4s ease-in-out;
+      width: 150%;
     }
   }
   .img:hover{
@@ -66,7 +65,14 @@
     }
   }
   .info{
-    
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 30px;
+    gap: 0;
+    h1{
+      margin: 0;
+    }
     span{
       i{
         font-size: 40px;
@@ -74,6 +80,68 @@
         filter: drop-shadow(0 0 2px black);
       }
     }
+  }
+}
+.contenedorhome{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+  padding-bottom: 30px;
+}
+.inicio{
+  padding-bottom: 40px;
+  margin-top: 40px;
+}
+.blog, .cv{
+  width: 44%;
+  height: 40vh;
+  border-radius: 40px;
+  box-shadow: 0 0 20px black;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20PX;
+  span{
+    font-size: 35px;
+    transition: all 0.3s ease-in-out;
+  }
+}
+.blog{
+  background-image: url(https://cdn.pixabay.com/photo/2017/02/26/20/37/china-2101308_1280.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
+}
+.cv{
+  background-image: url(https://cdn.pixabay.com/photo/2020/04/23/15/10/cv-5082903_1280.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
+}
+.blog:hover{
+  transform: scale(1.05);
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 15px black;
+  span{
+    font-size: 40px;
+  }
+}
+.cv:hover{
+  transform: scale(1.05);
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 15px black;
+  span{
+    font-size: 40px;
   }
 }
 .construccion{
@@ -94,6 +162,11 @@
   height: auto;
 }
 /*ingreso*/
+.enter{
+  position: fixed;
+  top:10px;
+  right:10px
+}
 .modaling{
   position: fixed;
   top: 0;
@@ -301,9 +374,10 @@
 }
 /*entradas*/
 .formEntrada{
+  position: fixed;
   display: flex;
   flex-direction: column;
-  position: relative;
+  right: 10px;
   .inputforment{
     visibility: hidden;
     height: 0;
@@ -311,8 +385,9 @@
 
 }
 .modalentrada{
-  top: 30px;
-  left: 30px;
+  
+  top: 60px;
+  right: 10px;
   border-radius: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -324,6 +399,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  select{
+    font-size: 15px;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+  }
   .formti{
     display: flex;
     justify-content: center;

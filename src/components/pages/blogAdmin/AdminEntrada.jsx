@@ -53,8 +53,7 @@ const AdminEntrada = () => {
     }
   }, [consulta]);
 
-  console.log(publicacion);
-  console.log(showtypeents);
+
 
   const addtexto = (data) => {
     const url = `${baseUrl}/textos`;
@@ -73,41 +72,6 @@ const AdminEntrada = () => {
         )
       )
       .catch((err) => console.log(err));
-  };
-
-
-  function convertImageToBase64(imageFile) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(imageFile);
-      reader.onload = (event) => {
-        const base64Data = event.target.result;
-        const contentType = base64Data.split(',')[0];
-        const base64EncodedData = base64Data.split(',')[1];
-        
-        // Check if the image is JPG
-        if (contentType.indexOf('image/jpeg') !== -1) {
-          resolve(`data:image/png;base64,${base64EncodedData}`);
-        } else {
-          reject(new Error('Invalid image format. Please upload a JPG image.'));
-        }
-      };
-      reader.onerror = (error) => reject(error);
-    });
-  }
-  
-  // Example usage in React component
-  const handleChange = (event) => {
-    const selectedFile = event.target.files[0];
-    convertImageToBase64(selectedFile)
-      .then((base64Image) => {
-        // Set the base64Image to a state variable or use it directly
-        setDataimagen(base64Image);
-        console.log(dataimagen.length)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   };
 
 
@@ -213,11 +177,12 @@ const AdminEntrada = () => {
                   hidden
                 />
               )}
+              
               <select
                 value={tipoContenido}
                 onChange={(e) => setTipoContenido(e.target.value)}
               >
-                <option value="0">Seleccionar tipo entrada</option>
+                <option className='bx bx-camera' value="0">Seleccionar</option>
                 <option value="1">Imagen</option>
                 <option value="2">Texto</option>
               </select>

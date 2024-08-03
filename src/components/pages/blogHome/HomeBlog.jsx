@@ -41,9 +41,12 @@ const HomeBlog = ( ) => {
     
     axios.post(url,data)
       .then(res => 
-        console.log(res.data), 
+        console.log("carga exitosa"), 
         setIdBlog(undefined),  
-        setShowformp(false), 
+        reset({
+          titulo:' ',
+          descripcion:' '
+        })
         
       )
       .catch(err => console.log(err))
@@ -72,7 +75,7 @@ const HomeBlog = ( ) => {
                   showformp &&
                   <div className='formularioPublicacion'>
                   <form action="" onSubmit={handleSubmit(postpublic)}>
-                    <input type="text" {...register("titulo")} placeholder='Nombre' name='titulo' required/>
+                    <input type="text" name="titulo" {...register("titulo")} placeholder='Nombre' required/>
                     <input type="text" name="descripcion" {...register("descripcion")} placeholder='Descripcion del artículo'  required/>
                     <input type="text" {...register("imagen")} placeholder='url de la imagen' name='imagen' />
                     <input type="text" value={item.id} {...register("blogId")} readOnly hidden/>

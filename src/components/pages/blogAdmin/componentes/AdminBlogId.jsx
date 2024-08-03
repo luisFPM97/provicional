@@ -12,8 +12,12 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
     function showAdminB() {
         setShowAddBlog(prevState => !prevState)
     }
+
+    
+
     const submit = data => {
         const url = `${baseUrl}/blogs`
+        location.reload()
         setShowAddBlog(prevState => !prevState)
         reset({
             name:' ',
@@ -21,7 +25,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
         }),
         axios.post(url,data)
           .then(res => 
-            console.log(res.data)
+            console.log("carga exitosa"),
           )
           .catch()
           
@@ -55,8 +59,8 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
                         showAddBlog &&
                         <div className='formulario'>
                             <form action="" onSubmit={handleSubmit(submit)}>
-                                <input type="text" {...register("name")} placeholder="Titulo" name="name" required/>
-                                <input type="text" {...register("description")} placeholder="Descripcion" name="description" required/>
+                                <input type="text" {...register("name")} placeholder="Titulo" id="name" value=' ' required/>
+                                <input type="text" {...register("description")} placeholder="Descripcion" value=' ' id="description" required/>
                                 
                                 <button type='submit'>Añadir Blog</button>
                             </form>

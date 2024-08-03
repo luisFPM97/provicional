@@ -45,12 +45,25 @@ const Home = () => {
         <div className='construccion'>
         
         </div>
+    
+    <div className='contenedorhome'>
+
+      <Link className='blog'to="/blog">
+        <span>BITÁCORA DE VIAJES</span>
+      </Link>
+      
+      <Link className='cv'>
+          <span>CONOCE MÁS SOBRE MI</span>
+      </Link>
+
+    </div>
+    
       
 
-      <Link to="/blog"><button>Blog</button></Link>
+    
 
       <div className='enter'>
-        <button onClick={showM}>Administrar</button>
+        <button onClick={showM}>INICIAR SESIÓN</button>
         {showModal && (
           <div className='modaling'>
             <div className='cardm'>
