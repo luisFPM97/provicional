@@ -182,7 +182,7 @@ const AdminEntrada = () => {
                 value={tipoContenido}
                 onChange={(e) => setTipoContenido(e.target.value)}
               >
-                <option className='bx bx-camera' value="0">Seleccionar</option>
+                <option  value="0">Seleccionar</option>
                 <option value="1">Imagen</option>
                 <option value="2">Texto</option>
               </select>
