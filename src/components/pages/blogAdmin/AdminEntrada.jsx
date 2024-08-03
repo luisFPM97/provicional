@@ -18,6 +18,8 @@ const AdminEntrada = () => {
   const [tipoContenido, setTipoContenido] = useState("0");
   const [dataentrada, setDataentrada] = useState(undefined);
   const [dataimagen, setDataimagen] = useState('')
+  const [image, setImage] = useState(null);
+  const [entradaId, setEntradaId] = useState();
   const {
     handleSubmit,
     register,
@@ -109,17 +111,24 @@ const AdminEntrada = () => {
   };
 
 
-  const addimagen = (data) => {
-
-    console.log(data);
+  const addimagen = (e,data) => {
+      console.log(data.target[0].value)
+      const formData = new FormData();
+      formData.append('image', image);
+      formData.append('entradaId', data.target[0].value);
+    
     const url = `${baseUrl}/imagenes`;
     if (consulta) {
       setConsulta(false);
     }
-    axios.post(url, data)
+    axios.post(url,  formData, {
+      headers: {
+          'Content-Type': 'multipart/form-data'
+      }
+  })
       .then(
         (res) => (
-          console.log(res.data),
+          console.log("imagen subida"),
           reset({
             urlImagen: "",
           }),
@@ -150,13 +159,13 @@ const AdminEntrada = () => {
                     <span>
                       {moment(entrada.createdAt).format("YYYY-MM-DD")}
                     </span>
-                    {(entrada.imagens.length === 0 && <></>) || (
+                    {(entrada.images.length === 0 && <></>) || (
                       <div className="contenedorimagenes">
-                        {entrada.imagens
+                        {entrada.images
                           .sort((a, b) => a.id - b.id)
                           .map((imagen, i) => (
                             <div key={i} className="imagen">
-                              <img src={imagen.urlImagen} alt="" />
+                              <img src={imagen.url} alt="" />
                             </div>
                           ))}
                       </div>
@@ -201,6 +210,7 @@ const AdminEntrada = () => {
                   name=""
                   id=""
                   readOnly
+                  hidden
                 />
               )}
               <select
@@ -223,20 +233,10 @@ const AdminEntrada = () => {
                     value={dataentrada.id}
                     {...register("entradaId")}
                     name="entradaId"
-                    id=""
-                    readOnly
                     hidden
                   />
-                  <input
-                    type="text"
-                    accept="image/jpeg"
-                    {...register("urlImagen")}
-                    name="urlImagen"
-                    placeholder="url de la imagen"
-                    onChange={handleChange}
-                  />
-                  <input type="text" value={dataimagen} hidden/>
-                  <img src={dataimagen} alt=""  hidden/>
+                  <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+                  <input type="text" value={dataentrada.id} onChange={(e) => setEntradaId(dataentrada.id)} {...register("entradaId")} hidden/>
                   <button type="submit">Agregar</button>
                 </form>
               )}
@@ -251,8 +251,6 @@ const AdminEntrada = () => {
                     value={dataentrada.id}
                     {...register("entradaId")}
                     name="entradaId"
-                    id=""
-                    readOnly
                     hidden
                   />
                   <textarea

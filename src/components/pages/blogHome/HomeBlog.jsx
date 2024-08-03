@@ -10,30 +10,44 @@ const HomeBlog = ( ) => {
   const [idBlog, setIdBlog] = useState()
   const [showformp, setShowformp] = useState(undefined)
   const { handleSubmit, register, reset, formState: { errors } } = useForm()
-  useEffect(() => {
-    axios.get(`${baseUrl}/blogs`)
-    .then(res => 
-      setDataBlog(res.data)
-    )
-    .catch(err => console.log(err))
-  }, [])
+  const [cargarpubli, setCargarpubli] = useState(true)
+  
  
+  useEffect(() => {
+  
+      console.log(showformp)
+      axios
+      .get(`${baseUrl}/blogs`)
+      .then(res => 
+        setDataBlog(res.data),
+        setCargarpubli(false)
+      )
+      .catch(err => console.log(err))
+    
+  }, [])
+
   const changefshow=(id) =>{
     setShowformp(true)
     setIdBlog(id)
+    
+    
   }
  
 
   const postpublic = data => {
     
+    data.imagen = "https://cdn.pixabay.com/photo/2023/04/24/03/16/camping-7947056_1280.jpg"
     const url = `${baseUrl}/publicaciones`
     
     axios.post(url,data)
       .then(res => 
         console.log(res.data), 
-        setIdBlog(undefined)           
+        setIdBlog(undefined),  
+        setShowformp(false), 
+        
       )
       .catch(err => console.log(err))
+      
 }
 
   return (
@@ -60,8 +74,8 @@ const HomeBlog = ( ) => {
                   <form action="" onSubmit={handleSubmit(postpublic)}>
                     <input type="text" {...register("titulo")} placeholder='Nombre' name='titulo' required/>
                     <input type="text" name="descripcion" {...register("descripcion")} placeholder='Descripcion del artículo'  required/>
-                    <input type="text" {...register("imagen")} placeholder='url de la imagen' name='imagen' required/>
-                    <input type="text" value={item.id} {...register("blogId")} readOnly/>
+                    <input type="text" {...register("imagen")} placeholder='url de la imagen' name='imagen' />
+                    <input type="text" value={item.id} {...register("blogId")} readOnly hidden/>
                     <button  type='submit' >Agregar publicacion</button>
                   </form>
                 </div>
