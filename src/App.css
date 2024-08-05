@@ -327,6 +327,13 @@
               text-shadow: 0 0 140px rgb(51, 51, 51);
             }
           }
+          .btnxp{
+            position: absolute;
+            z-index: 999;
+            top: 100px;
+            right: 30px;
+            box-shadow: 0 0 10px red;
+          }
         }
         .publicaciones{
           width: 100%;
@@ -415,6 +422,23 @@
     height: 0;
   }
 
+}
+.btnsent{
+  box-shadow: 0 0 5px greenyellow;
+}
+.entradavideo{
+  .btnvideo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .bx{
+      font-size: 35px;
+      color: red;
+    }
+    a{
+      color: inherit;
+    }
+  }
 }
 .modalentrada{
 

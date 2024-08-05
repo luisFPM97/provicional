@@ -29,10 +29,10 @@ const HomeBlog = ( ) => {
   const changefshow=(id) =>{
     setShowformp(true)
     setIdBlog(id)
-    
-    
   }
- 
+  function closeshowf() {
+    setShowformp(false)
+  }
 
   const postpublic = data => {
     
@@ -82,6 +82,7 @@ const HomeBlog = ( ) => {
                     <input type="text" value={item.id} {...register("blogId")} readOnly hidden/>
                     <button  type='submit' >Agregar publicacion</button>
                   </form>
+                  <button className='btnxp' onClick={closeshowf}>x</button>
                 </div>
                 }
                 

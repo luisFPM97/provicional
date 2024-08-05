@@ -185,6 +185,7 @@ const AdminEntrada = () => {
                 <option  value="0">Seleccionar</option>
                 <option value="1">Imagen</option>
                 <option value="2">Texto</option>
+                <option value="3">Video</option>
               </select>
 
               {tipoContenido === "1" && (
@@ -226,7 +227,19 @@ const AdminEntrada = () => {
                   <button type="submit">Agregar</button>
                 </form>
               )}
-              <button
+              {tipoContenido === "3" && (
+                <div className="entradavideo">
+                  <br />
+                  <button className="btnvideo"> <a href="https://studio.youtube.com/channel/" target="blank">Subir video</a><i className='bx bxl-youtube'></i></button>
+                  <br />
+                  <form action="">
+                    <input type="text"  placeholder="Link de video youtube"/>
+                  </form>
+                  <br />
+                </div>
+                
+              )}
+              <button className="btnsent"
                 onClick={() => (setShowtypeents(false), location.reload())}
               >
                 Terminar entrada
