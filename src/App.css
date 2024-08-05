@@ -427,6 +427,13 @@
   box-shadow: 0 0 5px greenyellow;
 }
 .entradavideo{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   .btnvideo{
     display: flex;
     justify-content: center;
@@ -439,6 +446,21 @@
       color: inherit;
     }
   }
+  .formvideo{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 80%;
+    input{
+      font-size: 25px;
+    }
+  }
+}
+.btnxEntrada{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-shadow: 0 0 10px red;
 }
 .modalentrada{
 
@@ -448,7 +470,7 @@
   position: fixed;
   height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -501,6 +523,9 @@
     width: 90%;
     display: flex;
     font-weight: bold;
+    i{
+      cursor: pointer;
+    }
   }
 }
 .contenedorimagenes{
@@ -523,6 +548,22 @@
       height: 100%;
     }
   }
+}
+.contenedorvideos{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .video{
+    width: 90%;
+    .videoc{
+      width: 100%;
+    }
+  }
+}
+.horizontalline{
+  width: 95vw;
 }
 /*AdminBlog*/
 .adminblog{

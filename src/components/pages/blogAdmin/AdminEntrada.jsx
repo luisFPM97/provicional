@@ -28,18 +28,8 @@ const AdminEntrada = () => {
   } = useForm();
   const { id } = useParams();
 
-  const submit = (data) => {
-    console.log(data);
-    const url = `${baseUrl}/entradas`;
-    axios
-      .post(url, data)
-      .then(
-        (res) => setDataentrada(res.data),
-        setShowtypeents(true),
-        setConsulta(false)
-      )
-      .catch((err) => console.log(err));
-  };
+  
+  
   useEffect(() => {
     if (!password) {
       window.location.href = "/";
@@ -53,8 +43,20 @@ const AdminEntrada = () => {
     }
   }, [consulta]);
 
-
-
+  
+  
+  const submit = (data) => {
+    console.log(data);
+    const url = `${baseUrl}/entradas`;
+    axios
+      .post(url, data)
+      .then(
+        (res) => setDataentrada(res.data),
+        setShowtypeents(true),
+        setConsulta(false)
+      )
+      .catch((err) => console.log(err));
+  };
   const addtexto = (data) => {
     const url = `${baseUrl}/textos`;
     console.log(data);
@@ -68,13 +70,32 @@ const AdminEntrada = () => {
           reset({
             contenido: "",
           }),
-          setConsulta(true)
+          setShowtypeents(false),
+          setConsulta(true),
+          alert("texto agregada"),
+          location.reload()
         )
       )
       .catch((err) => console.log(err));
   };
+  const addvideo = (data) => {
+    let urlvideo = data.url
+    // Expresión regular para extraer el ID y los parámetros
+    urlvideo = urlvideo.replace('youtu.be', 'www.youtube.com/embed');
+    urlvideo = urlvideo.replace('watch?v=', 'embed/');
 
-
+ 
+  data.url = urlvideo;
+  console.log(data.url)
+    const url = `${baseUrl}/videos`;
+    console.log(data);
+    if (consulta) {
+      setConsulta(false);
+    }
+    axios.post(url, data)
+      .then(res=>console.log(res.data), reset({url: " "}),setShowtypeents(false), setConsulta(true),alert("Video agregado"),)
+      .catch(err=>console.log(err))
+  };
   const addimagen = (e,data) => {
       console.log(data.target[0].value)
       const formData = new FormData();
@@ -96,10 +117,19 @@ const AdminEntrada = () => {
           reset({
             file: "",
           }),
-          setConsulta(true)
+          setShowtypeents(false),
+          setConsulta(true),
+          alert("Imagen agregada"),
+          location.reload()
         )
       )
       .catch((err) => console.log(err));
+  };
+  const deleteent = (id) => {
+    console.log(id)
+    axios.delete(`${baseUrl}/entradas/${id}`)
+      .then((res) => console.log(res.data),setShowtypeents(false), alert(`usted elimino la entrada ${id}`), location.reload())
+      .catch(err=>console.log(err))
   };
 
   return (
@@ -120,9 +150,27 @@ const AdminEntrada = () => {
                 .sort((a, b) => a.id - b.id)
                 .map((entrada, index) => (
                   <div key={index} className="entrada">
+                    <hr className="horizontalline" />
+                    
                     <span className="fecha">
-                      {moment(entrada.createdAt).format("YYYY-MM-DD HH:mm")}
+                      {moment(entrada.createdAt).format("YYYY-MM-DD HH:mm")}   
+                      <i class='bx bx-trash'  onClick={() => deleteent(entrada.id)}></i>
                     </span>
+                    {
+                      (entrada.videos.length === 0 && <></>)||(
+                        <div className="contenedorvideos">
+                          {
+                            entrada.videos
+                            .sort((a, b) => a.id - b.id)
+                            .map((video, i) => (
+                              <div key={i} className="video">
+                                  <iframe className="videoc"  height="480" src={`${video.url}`}   ng-show="showvideo" ></iframe>
+                              </div>
+                            ))
+                          }
+                        </div>
+                      )
+                    }
                     {(entrada.images.length === 0 && <></>) || (
                       <div className="contenedorimagenes">
                         {entrada.images
@@ -145,8 +193,10 @@ const AdminEntrada = () => {
                           ))}
                       </div>
                     )}
+                    
                   </div>
                 ))}
+                
             </div>
           )) || <span>cargando</span>}
           <br />
@@ -168,6 +218,7 @@ const AdminEntrada = () => {
           {showtypeents && (
             <div className="modalentrada">
               {dataentrada && (
+                <>
                 <input
                   type="text"
                   value={dataentrada.id}
@@ -176,6 +227,8 @@ const AdminEntrada = () => {
                   readOnly
                   hidden
                 />
+                
+                </>
               )}
               
               <select
@@ -232,8 +285,16 @@ const AdminEntrada = () => {
                   <br />
                   <button className="btnvideo"> <a href="https://studio.youtube.com/channel/" target="blank">Subir video</a><i className='bx bxl-youtube'></i></button>
                   <br />
-                  <form action="">
-                    <input type="text"  placeholder="Link de video youtube"/>
+                  <form className="formvideo" action="" onSubmit={handleSubmit(addvideo)}>
+                  <input
+                    type="text"
+                    value={dataentrada.id}
+                    {...register("entradaId")}
+                    name="entradaId"
+                    hidden
+                  />
+                    <input type="text"  placeholder="Link de video youtube" {...register("url")}/>
+                    <button type="submit">Agregar</button>
                   </form>
                   <br />
                 </div>
@@ -244,6 +305,7 @@ const AdminEntrada = () => {
               >
                 Terminar entrada
               </button>
+              
             </div>
           )}
         </>
