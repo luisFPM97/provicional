@@ -17,7 +17,7 @@ const ViewBlog = () => {
   return (
     <div className='homePageBlog'>
         <div className='header'>
-        <img className='svgleo' src="/public/img/leo.svg" alt=""  />
+        <img className='svgleo' src="img/leo.svg" alt=""  />
         <h1 className='title'>Leo Andino</h1>
       </div>
       {
