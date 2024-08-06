@@ -576,8 +576,16 @@
 }
 .horizontalline{
   width: 95vw;
+  color: #ffffff00;
 }
 /*AdminBlog*/
+.svgleo{
+  position: absolute;
+  height: 350px;
+  left: 30px;
+  top: 0px;
+
+}
 .adminblog{
   width: 100%;
   height: 100%;

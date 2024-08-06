@@ -17,11 +17,13 @@ const ViewBlog = () => {
   return (
     <div className='homePageBlog'>
         <div className='header'>
+        <img className='svgleo' src="/public/img/leo.svg" alt=""  />
         <h1 className='title'>Leo Andino</h1>
       </div>
       {
         infoApi &&
         <div className='itemCont'>
+          
         <span className='titleBlog'>Bitacora de viajes</span>
         <div className='itemsblog'>
           {
@@ -60,7 +62,7 @@ const ViewBlog = () => {
       </div>
       ||
       <>
-      <div>Cargando ...</div>
+      <div>Cargando ... </div>
       </>
       }
     </div>
