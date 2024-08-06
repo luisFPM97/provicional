@@ -512,13 +512,16 @@
   max-width: 98vw;
 }
 .entrada{
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
   padding-bottom: 30px;
+  hr{
+    width: 94vw;
+  }
   .fecha{
     width: 90%;
     display: flex;

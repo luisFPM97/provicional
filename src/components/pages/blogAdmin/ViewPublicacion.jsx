@@ -36,7 +36,23 @@ const ViewPublicacion = () => {
                     {
                         publicacion.entradas.sort((a, b) => a.id - b.id).map((entrada, index) =>
                             <div key={index} className='entrada' >
+                                <hr />
                                 <span>{moment(entrada.createdAt).format('YYYY-MM-DD')}</span>
+                                {
+                                    (entrada.videos.length === 0 && <></>)||(
+                                        <div className="contenedorvideos">
+                                          {
+                                            entrada.videos
+                                            .sort((a, b) => a.id - b.id)
+                                            .map((video, i) => (
+                                              <div key={i} className="video">
+                                                  <iframe className="videoc"  height="480" src={`${video.url}`}   ng-show="showvideo" ></iframe>
+                                              </div>
+                                            ))
+                                          }
+                                        </div>
+                                      )
+                                }
                                 {
                                     entrada.images.length === 0
                                     &&
