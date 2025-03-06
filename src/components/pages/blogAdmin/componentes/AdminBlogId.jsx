@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import HomeBlog from '../../blogHome/HomeBlog'
 
 const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
-
+    const baseUrl = "https://leoandinobackend-1.onrender.com"
     const [showAddBlog, setShowAddBlog] = useState(false)
     const { handleSubmit, register, reset, formState: { errors } } = useForm()
     const [dataBlogc, setDataBlogc] = useState(undefined)
@@ -17,7 +17,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
 
     const submit = data => {
         const url = `${baseUrl}/blogs`
-        location.reload()
+        //location.reload()
         setShowAddBlog(prevState => !prevState)
         reset({
             name:' ',
@@ -30,7 +30,7 @@ const AdminBlogId = ({ setUpdateInfo,updateInfo}) => {
           .catch()
           
     }
-    const baseUrl = "https://leoandinobackend-1.onrender.com"
+    
     useEffect(() => {
         axios.get(`${baseUrl}/blogs`)
             .then(res => 
